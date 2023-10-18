@@ -1,6 +1,15 @@
-numbers = [2, -93, -2, 8, None, -44, -1, -85, -14, 90, -22, -90, -100, -8, 38, -92, -45, 67, 53, 25]
+money_capital = 20000  # Подушка безопасности
+salary = 5000  # Ежемесячная зарплата
+spend = 6000  # Траты за первый месяц
+increase = 0.05  # Ежемесячный рост цен
 
-# TODO заменить значение пропущенного элемента средним арифметическим
-sum_numbers = sum(numbers[0:4]) + sum(numbers[5:21])
-numbers[4] = sum_numbers / len(numbers)
-print("Измененный список:", numbers)
+# TODO Посчитайте количество  месяцев, которое можно протянуть без долгов
+month = 0
+while True:
+    x = spend - salary
+    if x > money_capital:
+        break
+    month += 1
+    money_capital -= x
+    spend *= 1 + increase
+print("Количество месяцев, которое можно протянуть без долгов:", month)

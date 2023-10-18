@@ -1,12 +1,14 @@
-# TODO Найдите количество книг, которое можно разместить на дискете
-bytes_ = 4
+salary = 5000  # Ежемесячная зарплата
+spend = 6000  # Траты за первый месяц
+months = 10  # Количество месяцев, которое планируется протянуть без долгов
+increase = 0.03  # Ежемесячный рост цен
+money_capital = 0
+# TODO Рассчитайте подушку безопасности, чтобы протянуть 10 месяцев без долгов
 
-pages = 100
-lines = 50
-chars = 25
 
-total_chars = pages * lines * chars
-total_bytes = total_chars * bytes_
-disket = 1.44 * 1024 * 1024   # емкость дискеты в байтах
-x = int(disket / total_bytes)
-print("Количество книг, помещающихся на дискету:", x)
+for month in range(10,0,-1):
+    x = spend - salary
+    money_capital += x
+    spend *= 1 + increase
+
+print(f"Подушка безопасности, чтобы протянуть {months} месяцев без долгов: {round(money_capital)}")
